@@ -115,6 +115,49 @@ class LogEntry:
 # MOCK DATA GENERATORS
 # ─────────────────────────────────────────────────────────────────────────────
 
+PRODUCT_IMAGE_MAP: dict[str, str] = {
+    # Outerwear
+    "Stormline Waterproof Jacket": "https://images-na.ssl-images-amazon.com/images/I/51C-yNl+P2L.jpg",
+    "Heritage Wool Overcoat": "https://preview.redd.it/wool-overcoat-recommendations-v0-3b1vq1sb70md1.jpeg?width=640&crop=smart&auto=webp&s=d96a0c77bd62d54d564d838df9275b08c62e6995",
+    "Alpine Down Parka": "https://www.basicclothesco.com/cdn/shop/files/Men_sDownWinterJacket_Thick_Warm_andStylishHoodedParkagray.jpg?v=1738014137&width=800",
+    "City Trench Coat": "https://hips.hearstapps.com/hmg-prod/images/guest-is-seen-wearing-a-belted-coach-trench-coat-black-news-photo-1760632867.pjpeg?crop=1xw:0.98061xh;center,top&resize=600:*",
+    # Footwear
+    "Trail Runner GTX": "https://i5.walmartimages.com/seo/Nike-Pegasus-Trail-3-Gore-Tex-DC8793-001-Men-s-Black-Running-Sneaker-Shoes-OF43-11_82101c5e-9fb8-4920-afa2-9280052f302f.39640292ba76ba57fa65d9ce2def395c.jpeg",
+    "Studio Knit Trainer": "https://allyfashion.com/cdn/shop/products/shoes-white-knit-detail-lace-up-trainers-sneakers-33297563779265.jpg?v=1668745796",
+    "Classic Leather Boot": "https://i.pinimg.com/originals/22/a2/8e/22a28ee350fe6855dc5dd9b330f5ae3c.jpg",
+    "Court Sneaker": "https://images.quince.com/1goqOp4rZiRM96no4IH8H9/a71b70053ea180545992c3bc6816ba0b/W--392_Italian_Leather_and_Suede_Low_Profile_Sneaker_BLA_20402_CROPPED.jpg?w=800&q=80",
+    # Activewear
+    "Flex Performance Tee": "https://m.media-amazon.com/images/I/518pyWRbiXL.jpg",
+    "Compression Run Tight": "https://images-na.ssl-images-amazon.com/images/I/51MBR4Wi1fL.jpg",
+    "Yoga Studio Legging": "https://studiokyogawear.com/cdn/shop/files/Rib_Bralette_Leggings_Black_4_SL.jpg?v=1757647895&width=800",
+    "Training Hoodie": "https://cdn.shopify.com/s/files/1/0156/6146/files/images-TrainingOversizedFleeceHoodieGSCherryPurpleB5A7N_PCDS_0064_0012_3840x.jpg?v=1752762591",
+    # Home & Living
+    "Linen Bedding Set": "https://www.soakandsleep.com/cdn/shop/files/light-grey-french-linen-lifestyle-add1_3.jpg?v=1749205173&width=800",
+    "Ceramic Pour-Over Set": "https://m.media-amazon.com/images/I/81Ng2Qzu7-L.jpg",
+    "Wool Throw Blanket": "https://m.media-amazon.com/images/I/817udNHKbiL.jpg",
+    "Aroma Diffuser": "https://m.media-amazon.com/images/I/61RmRRbD6SL.jpg",
+    # Electronics
+    "Noise-Cancel Headphones": "https://m.media-amazon.com/images/S/aplus-media-library-service-media/32d5b783-d826-408d-8bdb-109908bb4c6f.__CR0,0,1464,600_PT0_SX1464_V1___.jpg",
+    "Compact Mirrorless Camera": "https://mldvwwasb8tu.i.optimole.com/cb:7ZGO.6206b/w:1080/h:1080/q:90/f:best/ig:avif/https://travelaway.me/wp-content/uploads/2023/11/a-6700-compact-mirrorless-camera.jpg",
+    "Smart Home Hub": "https://media.istockphoto.com/id/1214098172/photo/smart-home-hub-for-home-automation-on-wooden-desktop-with-copyspace.jpg?s=612x612&w=0&k=20&c=q2pbA6n-9vMArLJsg9tgpMBjW8GMc0oibViC94IGsoo=",
+    "4K Streaming Stick": "https://m.media-amazon.com/images/I/61ZYTXa9DdL.jpg",
+    # Beauty
+    "Vitamin C Serum": "https://media.glamour.com/photos/69a86361bfdccf45556df222/3:4/w_748,c_limit/Product%20(2).png",
+    "Hydrating Cleanser": "https://sonage.com/cdn/shop/files/CleanserComp1x1_648b212f-69da-4f90-8458-1f402f2dd470.jpg?v=1750290562&width=800",
+    "SPF 50 Mineral Sunscreen": "https://bluelizardsunscreen.com/cdn/shop/files/Sheer_Face_Swatch.webp?v=1768398096&width=800",
+    "Volumising Mascara": "https://americanculturebrands.com/cdn/shop/products/KLOR-WEB-IMAGES_0001s_0002_DSC_0029.png?v=1711644623&width=800",
+    # Kids
+    "Rainproof Kids Jacket": "https://images-na.ssl-images-amazon.com/images/I/51C-yNl+P2L.jpg",
+    "Soft-Sole Toddler Shoe": "https://m.media-amazon.com/images/I/61ll6XbelGL.jpg",
+    "Organic Cotton PJs": "https://images.squarespace-cdn.com/content/v1/5bb8cd5aa09a7e4c80cb9fd8/261ae1c0-8967-4f73-a3c8-752e759e5a1b/15+soft+organic+cotton+kids+pyjamas+(2).jpg",
+    "Reusable Lunch Box": "https://images-na.ssl-images-amazon.com/images/I/81SdGysIzHL.jpg",
+    # Accessories
+    "Leather Card Holder": "https://m.media-amazon.com/images/I/71rMkmHxHAL.jpg",
+    "Cashmere Scarf": "https://italoferretti.com/wp-content/uploads/2024/12/SCARF_416641-06-70X200-2-500x500.jpg",
+    "Polarised Sunglasses": "https://m.media-amazon.com/images/I/61mtMYZYQlL.jpg",
+    "Canvas Tote Bag": "https://img.freepik.com/free-photo/canvas-tote-bag-minimal-style_53876-111057.jpg?semt=ais_hybrid&w=740&q=80",
+}
+
 PRODUCT_TEMPLATES = {
     "Outerwear": [
         ("Stormline Waterproof Jacket", "Seam-sealed shell built for relentless rain.", ["waterproof", "rain", "outdoor"]),
@@ -175,9 +218,10 @@ def generate_catalogue(n_skus: int = 50, seed: int = 42) -> pd.DataFrame:
         category = rng.choice(CATEGORIES)
         name, desc, tags = rng.choice(PRODUCT_TEMPLATES[category])
         sku_id = f"SKU-{1000 + i}"
-        # Use placeholder image service; deterministic per SKU
-        seed_str = sku_id.replace("-", "")
-        image_url = f"https://picsum.photos/seed/{seed_str}/600/400"
+        image_url = PRODUCT_IMAGE_MAP.get(
+            name,
+            f"https://picsum.photos/seed/{sku_id.replace('-', '')}/600/400",
+        )
         rows.append({
             "sku_id": sku_id,
             "name": name,
@@ -289,8 +333,12 @@ def ingest_catalogue_csv(file) -> tuple[pd.DataFrame | None, list[str]]:
     for col, default_fn in CATALOGUE_OPTIONAL_DEFAULTS.items():
         if col not in df.columns:
             if col == "image_url":
-                df[col] = df["sku_id"].astype(str).apply(
-                    lambda s: f"https://picsum.photos/seed/{s.replace('-', '')}/600/400"
+                df[col] = df.apply(
+                    lambda row: PRODUCT_IMAGE_MAP.get(
+                        str(row.get("name", "")),
+                        f"https://picsum.photos/seed/{str(row['sku_id']).replace('-', '')}/600/400",
+                    ),
+                    axis=1,
                 )
             else:
                 df[col] = [default_fn(rng) for _ in range(len(df))]
@@ -306,8 +354,12 @@ def ingest_catalogue_csv(file) -> tuple[pd.DataFrame | None, list[str]]:
     # Replace any blank image_urls with a deterministic placeholder
     blank_imgs = df["image_url"].str.strip() == ""
     if blank_imgs.any():
-        df.loc[blank_imgs, "image_url"] = df.loc[blank_imgs, "sku_id"].apply(
-            lambda s: f"https://picsum.photos/seed/{s.replace('-', '')}/600/400"
+        df.loc[blank_imgs, "image_url"] = df.loc[blank_imgs].apply(
+            lambda row: PRODUCT_IMAGE_MAP.get(
+                str(row.get("name", "")),
+                f"https://picsum.photos/seed/{str(row['sku_id']).replace('-', '')}/600/400",
+            ),
+            axis=1,
         )
     df["price"] = pd.to_numeric(df["price"], errors="coerce").fillna(0.0)
     df["stock_level"] = pd.to_numeric(df["stock_level"], errors="coerce").fillna(0).astype(int)
